@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4c29ddb3cf21d4e9b0596a8ba26af7, type: 3}
+  m_Name: ItemDatabase
+  m_EditorClassIdentifier: 
+  itemList:
+  - itemName: 
+    itemID: 0
+    itemDesc: 'If you drink this nice bottle you will get some health back.
+
+
+      + 20 Health'
+    itemIcon: {fileID: 0}
+    itemModel: {fileID: 0}
+    itemValue: 1
+    itemType: 2
+    itemWeight: 0
+    maxStack: 0
+    indexItemInList: 999
+    rarity: 0
+    itemAttributes: []
+  - itemName: "Ep\xE9e en fer"
+    itemID: 1
+    itemDesc: "Une \xE9p\xE9e permettant de se battre."
+    itemIcon: {fileID: 21300000, guid: 17b0b3985c72a104ba7c75f52217538e, type: 3}
+    itemModel: {fileID: 1319337793629318, guid: 53e2b99d4e1c57e4aaaa7fb6368c66e5,
+      type: 2}
+    itemValue: 10
+    itemType: 1
+    itemWeight: 5
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 10
+    itemAttributes:
+    - attributeName: Damage
+      attributeValue: 10
+  - itemName: Casque en fer
+    itemID: 2
+    itemDesc: Un casque basique.
+    itemIcon: {fileID: 21300000, guid: 98f5e61dc86e9814d8c8d9e8e54ac417, type: 3}
+    itemModel: {fileID: 1562594213108590, guid: dba876774c020a6408a796da1b3dcb83,
+      type: 2}
+    itemValue: 10
+    itemType: 4
+    itemWeight: 5
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 10
+    itemAttributes:
+    - attributeName: Armor
+      attributeValue: 10
+  - itemName: Gantelets en fer
+    itemID: 3
+    itemDesc: Des gantelets basiques.
+    itemIcon: {fileID: 21300000, guid: d08090c03cca5494da4f8f79251153ea, type: 3}
+    itemModel: {fileID: 1677985668497952, guid: ca60f3ac29529374d9c8d0f566c62599,
+      type: 2}
+    itemValue: 10
+    itemType: 11
+    itemWeight: 5
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 10
+    itemAttributes:
+    - attributeName: Armor
+      attributeValue: 10
+  - itemName: Katana
+    itemID: 4
+    itemDesc: Un katana.
+    itemIcon: {fileID: 21300000, guid: 5168978829fa5fb49b547ca26997095c, type: 3}
+    itemModel: {fileID: 1325044892024368, guid: e9b6711fd9b2dba489162663600bc244,
+      type: 2}
+    itemValue: 10
+    itemType: 1
+    itemWeight: 5
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 10
+    itemAttributes:
+    - attributeName: Damage
+      attributeValue: 20
+  - itemName: Gantelets en cuir
+    itemID: 5
+    itemDesc: Une paire de gantelets en cuir.
+    itemIcon: {fileID: 21300000, guid: 2ac662c22b865e244b2a9c5b862ce644, type: 3}
+    itemModel: {fileID: 1764033964936014, guid: 07703bc5105102f408ba1619e5c6b9ef,
+      type: 2}
+    itemValue: 10
+    itemType: 11
+    itemWeight: 5
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 10
+    itemAttributes:
+    - attributeName: Damage
+      attributeValue: 20
