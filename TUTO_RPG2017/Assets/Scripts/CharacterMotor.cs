@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CharacterMotor : MonoBehaviour {
 
+    // Scripts playerinventory
+    PlayerInventory playerInv;
+
     // Animations du perso
     Animation animations;
 
@@ -34,6 +37,7 @@ public class CharacterMotor : MonoBehaviour {
     void Start () {
         animations = gameObject.GetComponent<Animation>();
         playerCollider = gameObject.GetComponent<CapsuleCollider>();
+        playerInv = gameObject.GetComponent<PlayerInventory>();
         rayHit = GameObject.Find("RayHit");
     }
 
@@ -149,8 +153,8 @@ public class CharacterMotor : MonoBehaviour {
             {
                 Debug.DrawLine(rayHit.transform.position, hit.point, Color.red);
 
-                if (hit.transform.tag == "test") {
-                    print(hit.transform.name + " detected");
+                if (hit.transform.tag == "Enemy") {
+                    hit.transform.GetComponent<enemyAi>().ApplyDammage(playerInv.currentDamage);
                 }
 
             }

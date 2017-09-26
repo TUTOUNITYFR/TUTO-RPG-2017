@@ -180,12 +180,15 @@ public class PlayerInventory : MonoBehaviour
 
     public void ApplyDamage(float TheDamage)
     {
-        // la fameuse équation : PDV = PDV -(damage - ((armor * damage) / 100))
-        currentHealth = currentHealth - (TheDamage - ((currentArmor * TheDamage) / 100));
-
-        if(currentHealth <= 0)
+        if (!charactermotor.isDead)
         {
-            Dead();
+            // la fameuse équation : PDV = PDV -(damage - ((armor * damage) / 100))
+            currentHealth = currentHealth - (TheDamage - ((currentArmor * TheDamage) / 100));
+
+            if (currentHealth <= 0)
+            {
+                Dead();
+            }
         }
     }
 
@@ -273,12 +276,6 @@ public class PlayerInventory : MonoBehaviour
         // Pour la barre de mana
         float percentageMana = ((currentMana * 100) / maxMana) / 100;
         manaImage.fillAmount = percentageMana;
-
-        // Test pour les dégats
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            ApplyDamage(10);
-        }
 
         if (Input.GetKeyDown(inputManagerDatabase.CharacterSystemKeyCode))
         {

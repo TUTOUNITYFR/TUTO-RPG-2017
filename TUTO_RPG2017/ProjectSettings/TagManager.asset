@@ -18,6 +18,7 @@ TagManager:
   - Slot
   - Item
   - ItemIcon
+  - Enemy
   layers:
   - Default
   - TransparentFX
