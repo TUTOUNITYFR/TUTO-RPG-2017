@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class enemyAi : MonoBehaviour {
 
-    //Distance entre le joueur et l'ennemi
+    // Distance entre le joueur et l'ennemi
     private float Distance;
+
+    // Distance entre l'ennemi et sa position de base
+    private float DistanceBase;
+    private Vector3 basePositions;
 
     // Cible de l'ennemi
     public Transform Target;
@@ -33,10 +37,14 @@ public class enemyAi : MonoBehaviour {
     public float enemyHealth;
     private bool isDead = false;
 
+    // loots de l'ennemi
+    public GameObject[] loots;
+
     void Start () {
         agent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
         animations = gameObject.GetComponent<Animation>();
         attackTime = Time.time;
+        basePositions = transform.position;
     }
 
 
@@ -52,8 +60,11 @@ public class enemyAi : MonoBehaviour {
             // On calcule la distance entre le joueur et l'ennemi, en fonction de cette distance on effectue diverses actions
             Distance = Vector3.Distance(Target.position, transform.position);
 
+            // On calcule la distance entre l'ennemi et sa position de base
+            DistanceBase = Vector3.Distance(basePositions, transform.position);
+
             // Quand l'ennemi est loin = idle
-            if (Distance > chaseRange)
+            if (Distance > chaseRange && DistanceBase <= 1)
             {
                 idle();
             }
@@ -68,6 +79,11 @@ public class enemyAi : MonoBehaviour {
             if (Distance < attackRange)
             {
                 attack();
+            }
+
+            // Quand le joueur s'est échappé
+            if (Distance > chaseRange && DistanceBase > 1) {
+                BackBase();
             }
 
         }
@@ -115,10 +131,23 @@ public class enemyAi : MonoBehaviour {
         }
     }
 
+    // Retour a la base si le joueur s'est échappé et si notre ennemi est trop loin de sa base
+    public void BackBase() {
+        animations.Play("walk");
+        agent.destination = basePositions;
+    }
+
     public void Dead()
     {
+        gameObject.GetComponent<CapsuleCollider>().enabled = false;
         isDead = true;
         animations.Play("die");
+
+        // apparition du loot
+        int randomNumber = Random.Range(0, loots.Length);
+        GameObject finalLoot = loots[randomNumber];
+        Instantiate(finalLoot, transform.position, transform.rotation);
+
         Destroy(transform.gameObject, 5);
     }
 }
