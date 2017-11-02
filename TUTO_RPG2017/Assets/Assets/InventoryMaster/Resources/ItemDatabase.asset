@@ -102,3 +102,33 @@ MonoBehaviour:
     itemAttributes:
     - attributeName: Damage
       attributeValue: 20
+  - itemName: Potion de soin
+    itemID: 6
+    itemDesc: Une potion qui permet de se soigner de 10 points de vie
+    itemIcon: {fileID: 21300000, guid: 6dc5762501dd2df4da399f6c16a85907, type: 3}
+    itemModel: {fileID: 1420341840463792, guid: 976d26d1c6babf348abaad51bcff5a9d,
+      type: 2}
+    itemValue: 10
+    itemType: 2
+    itemWeight: 5
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 1
+    itemAttributes:
+    - attributeName: Health
+      attributeValue: 10
+  - itemName: Potion de mana
+    itemID: 7
+    itemDesc: "Une potion qui permet de r\xE9cup\xE9rer 10 points de mana"
+    itemIcon: {fileID: 21300000, guid: 1af77a087230dec4d86d092b83297d08, type: 3}
+    itemModel: {fileID: 1560274090285958, guid: 6bb9a1c0776073849924804b5c06f9c9,
+      type: 2}
+    itemValue: 10
+    itemType: 2
+    itemWeight: 5
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 1
+    itemAttributes:
+    - attributeName: Mana
+      attributeValue: 10
