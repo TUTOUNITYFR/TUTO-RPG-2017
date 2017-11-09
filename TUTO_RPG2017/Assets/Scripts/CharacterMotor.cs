@@ -34,6 +34,12 @@ public class CharacterMotor : MonoBehaviour {
     // Le personnage est-il mort ?
     public bool isDead = false;
 
+    // Spells
+    public GameObject raySpell;
+    public GameObject lightningSpellGO;
+    public float lightningSpellCost;
+    public float lightningSpellSpeed;
+
     void Start () {
         animations = gameObject.GetComponent<Animation>();
         playerCollider = gameObject.GetComponent<CapsuleCollider>();
@@ -64,6 +70,11 @@ public class CharacterMotor : MonoBehaviour {
                 {
                     Attack();
                 }
+
+                if (Input.GetKeyDown(KeyCode.Mouse1))
+                {
+                    AttackSpell();
+                }
             }
 
             // Si on sprint
@@ -86,6 +97,11 @@ public class CharacterMotor : MonoBehaviour {
                 if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
                     Attack();
+                }
+
+                if (Input.GetKeyDown(KeyCode.Mouse1))
+                {
+                    AttackSpell();
                 }
             }
 
@@ -112,6 +128,11 @@ public class CharacterMotor : MonoBehaviour {
                 if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
                     Attack();
+                }
+
+                if (Input.GetKeyDown(KeyCode.Mouse1))
+                {
+                    AttackSpell();
                 }
             }
 
@@ -161,5 +182,19 @@ public class CharacterMotor : MonoBehaviour {
             isAttacking = true;
         }
         
+    }
+
+    // Fonction de sorts
+    public void AttackSpell()
+    {
+        if (!isAttacking && playerInv.currentMana >= lightningSpellCost)
+        {
+            animations.Play("attack");
+            GameObject theSpell = Instantiate(lightningSpellGO, raySpell.transform.position, transform.rotation);
+            theSpell.GetComponent<Rigidbody>().AddForce(transform.forward * lightningSpellSpeed);
+            playerInv.currentMana -= lightningSpellCost;
+            isAttacking = true;
+        }
+
     }
 }
