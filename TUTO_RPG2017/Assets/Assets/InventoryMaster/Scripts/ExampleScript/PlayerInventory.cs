@@ -19,7 +19,8 @@ public class PlayerInventory : MonoBehaviour
     Image hpImage;
     Image manaImage;
 
-    float maxHealth = 100;
+    [HideInInspector]
+    public float maxHealth = 100;
     float maxMana = 100;
     float maxDamage = 0;
     float maxArmor = 0;
@@ -269,6 +270,13 @@ public class PlayerInventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        // empecher la vie actuelle d'etre supérieur à la vie max
+        if(currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+
         // Pour la barre de vie
         float percentageHP = ((currentHealth * 100) / maxHealth) / 100;
         hpImage.fillAmount = percentageHP;
