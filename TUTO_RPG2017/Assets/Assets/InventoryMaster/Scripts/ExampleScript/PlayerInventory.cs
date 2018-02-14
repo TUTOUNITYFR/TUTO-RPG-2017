@@ -30,7 +30,20 @@ public class PlayerInventory : MonoBehaviour
     public float currentDamage = 0;
     public float currentArmor = 0;
 
+    // Gold section 
+    public int goldCoins;
+    Text goldText;
+
     int normalSize = 3;
+
+    // experience section
+    Image experienceBar;
+    Text playerLevelTxt;
+    public int playerLevel = 1;
+    public float currentXP = 0;
+    public float maxXP = 100;
+    public float rateXP;
+    private playerSkills playerskills;
 
     public CharacterMotor charactermotor;
     public Animation playerAnimations;
@@ -160,6 +173,11 @@ public class PlayerInventory : MonoBehaviour
         hpImage = GameObject.Find("currentHP").GetComponent<Image>();
         manaImage = GameObject.Find("currentMana").GetComponent<Image>();
 
+        playerskills = gameObject.GetComponent<playerSkills>();
+        experienceBar = GameObject.Find("currentXP").GetComponent<Image>();
+        playerLevelTxt = GameObject.Find("playerLevel").GetComponent<Text>();
+        goldText = GameObject.Find("playerGold").GetComponent<Text>();
+
         charactermotor = gameObject.GetComponent<CharacterMotor>();
         playerAnimations = gameObject.GetComponent<Animation>();
 
@@ -270,6 +288,29 @@ public class PlayerInventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        goldText.text = "Gold : " + goldCoins;
+
+        // + 50 xp 
+        /*if (Input.GetKeyDown(KeyCode.M))
+        {
+            currentXP += 50;
+        }*/
+
+        // Si on a assez d'XP
+        if(currentXP >= maxXP)
+        {
+            float reste = currentXP - maxXP;
+            playerLevel += 1;
+            playerskills.availablePoints += 1;
+            playerLevelTxt.text = "Player Level : " + playerLevel;
+            currentXP = 0 + reste;
+            maxXP = maxXP * rateXP;
+        }
+
+        // Pour la barre d'XP
+        float percentageXP = ((currentXP * 100) / maxXP) / 100;
+        experienceBar.fillAmount = percentageXP;
 
         // empecher la vie actuelle d'etre supérieur à la vie max
         if(currentHealth > maxHealth)
