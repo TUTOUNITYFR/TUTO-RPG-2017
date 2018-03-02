@@ -7,6 +7,7 @@ public class shop : MonoBehaviour {
 
     public Inventory inventoryPlayer;
     public PlayerInventory playerinv;
+    public CharacterMotor charMotor;
     public GameObject shopPanel;
     public ItemDataBaseList itemDb;
 
@@ -34,6 +35,7 @@ public class shop : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        charMotor = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterMotor>();
         shopPanel.SetActive(false);
 	}
 
@@ -90,6 +92,7 @@ public class shop : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player") {
+            charMotor.isInShop = true;
             PrepareShop();
         }
     }
@@ -102,6 +105,7 @@ public class shop : MonoBehaviour {
             iconItem3.GetComponent<Button>().onClick.RemoveAllListeners();
 
             shopPanel.SetActive(false);
+            charMotor.isInShop = false;
         }
     }
 }

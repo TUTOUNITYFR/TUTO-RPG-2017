@@ -78,7 +78,7 @@ MonoBehaviour:
     itemIcon: {fileID: 21300000, guid: 5168978829fa5fb49b547ca26997095c, type: 3}
     itemModel: {fileID: 1325044892024368, guid: e9b6711fd9b2dba489162663600bc244,
       type: 2}
-    itemValue: 10
+    itemValue: 197
     itemType: 1
     itemWeight: 5
     maxStack: 1

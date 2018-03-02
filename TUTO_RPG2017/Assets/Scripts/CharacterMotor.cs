@@ -35,6 +35,9 @@ public class CharacterMotor : MonoBehaviour {
     // Le personnage est-il mort ?
     public bool isDead = false;
 
+    // le personnage est-il dans un magasin
+    public bool isInShop = false;
+
     // Spells
     [Header("Paramètres des sorts")]
     public int totalSpell;
